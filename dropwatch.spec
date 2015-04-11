@@ -1,7 +1,7 @@
 Summary:	Kernel dropped packet monitor
 Name:		dropwatch
 Version:	1.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2

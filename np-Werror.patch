@@ -1,0 +1,9 @@
+--- dropwatch-1.4/src/Makefile~	2016-04-01 17:36:46.000000000 +0900
++++ dropwatch-1.4/src/Makefile	2016-04-01 17:42:02.414711018 +0900
+@@ -1,5 +1,5 @@
+ all: dropwatch
+-CFLAGS+=-c -g -D_GNU_SOURCE -Wall -Werror `pkg-config --cflags libnl-3.0`
++CFLAGS+=-c -g -D_GNU_SOURCE -Wall `pkg-config --cflags libnl-3.0`
+ LDFLAGS=-lbfd -lreadline -lnl-3 -lnl-genl-3
+ OBJFILES := main.o lookup.o\
+ 	 lookup_bfd.o lookup_kas.o

@@ -1,11 +1,12 @@
 Summary:	Kernel dropped packet monitor
 Name:		dropwatch
 Version:	1.4
-Release:	6
+Release:	7
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2
 # Source0-md5:	5145753b3e9255bd9b190251ba4d3bbf
+Patch0:		np-Werror.patch
 URL:		http://fedorahosted.org/dropwatch
 BuildRequires:	binutils-devel
 BuildRequires:	libnl-devel
@@ -21,6 +22,7 @@ dropped network packets.
 
 %prep
 %setup -q
+%patch0 -p1
 
 cd src
 %{__sed} -i -e 's,gcc,$(CC),g' Makefile
@@ -29,10 +31,9 @@ cd src
 
 %build
 %{__make} -C src \
-	CC="%{__cc}"
+	CC="%{__cc}" \
 	EXTRA_CFLAGS="%{rpmcflags}" \
-	EXTRA_LDFLAGS="%{rpmldflags}" \
-	%{nil}
+	EXTRA_LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

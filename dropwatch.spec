@@ -10,7 +10,7 @@ Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2
 Patch0:		np-Werror.patch
 URL:		https://fedorahosted.org/dropwatch
 BuildRequires:	binutils-devel
-BuildRequires:	libnl-devel
+BuildRequires:	libnl-devel >= 3.2
 BuildRequires:	linux-libc-headers
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
@@ -52,5 +52,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/dropwatch
+%{_mandir}/man1/dropwatch.1*

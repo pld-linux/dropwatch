@@ -1,13 +1,14 @@
 Summary:	Kernel dropped packet monitor
+Summary(pl.UTF-8):	Monitor pakietów odrzuconych przez jądro
 Name:		dropwatch
 Version:	1.4
-Release:	7
+Release:	8
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2
 # Source0-md5:	5145753b3e9255bd9b190251ba4d3bbf
 Patch0:		np-Werror.patch
-URL:		http://fedorahosted.org/dropwatch
+URL:		https://fedorahosted.org/dropwatch
 BuildRequires:	binutils-devel
 BuildRequires:	libnl-devel
 BuildRequires:	linux-libc-headers
@@ -19,6 +20,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 dropwatch is an utility to interface to the kernel to monitor for
 dropped network packets.
+
+%description -l pl.UTF-8
+dropwatch to narzędzie współpracujące z jądrem w celu monitorowania
+odrzuconych pakietów sieciowych.
 
 %prep
 %setup -q

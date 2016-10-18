@@ -2,7 +2,7 @@ Summary:	Kernel dropped packet monitor
 Summary(pl.UTF-8):	Monitor pakietów odrzuconych przez jądro
 Name:		dropwatch
 Version:	1.4
-Release:	8
+Release:	9
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2

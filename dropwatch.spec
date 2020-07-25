@@ -1,19 +1,18 @@
 Summary:	Kernel dropped packet monitor
 Summary(pl.UTF-8):	Monitor pakietów odrzuconych przez jądro
 Name:		dropwatch
-Version:	1.4
-Release:	19
+Version:	1.5.3
+Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	https://fedorahosted.org/releases/d/r/dropwatch/%{name}-%{version}.tbz2
-# Source0-md5:	5145753b3e9255bd9b190251ba4d3bbf
-Patch0:		np-Werror.patch
-# dead
-#URL:		https://fedorahosted.org/dropwatch
-# is it "main" fork?
-URL:		https://github.com/garekkream/dropwatch
+Source0:	https://github.com/nhorman/dropwatch/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	64527bb669393e45b9b21f0b91c574c0
+URL:		https://github.com/nhorman/dropwatch
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	binutils-devel
 BuildRequires:	libnl-devel >= 3.2
+BuildRequires:	libpcap-devel
 BuildRequires:	linux-libc-headers
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
@@ -30,30 +29,29 @@ odrzuconych pakietów sieciowych.
 
 %prep
 %setup -q
-%patch0 -p1
-
-cd src
-%{__sed} -i -e 's,gcc,$(CC),g' Makefile
-%{__sed} -i -e '/^CFLAGS/ s/$/ $(EXTRA_CFLAGS)/' Makefile
-%{__sed} -i -e '/^LDFLAGS/ s/$/ $(EXTRA_LDFLAGS)/' Makefile
 
 %build
-%{__make} -C src \
-	CC="%{__cc}" \
-	EXTRA_CFLAGS="%{rpmcflags}" \
-	EXTRA_LDFLAGS="%{rpmldflags}"
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure
+
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
-install -p src/dropwatch $RPM_BUILD_ROOT%{_bindir}
-cp -p doc/dropwatch.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README.md
 %attr(755,root,root) %{_bindir}/dropwatch
+%attr(755,root,root) %{_bindir}/dwdump
 %{_mandir}/man1/dropwatch.1*

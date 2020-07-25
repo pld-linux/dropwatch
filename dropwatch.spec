@@ -13,10 +13,10 @@ BuildRequires:	automake
 BuildRequires:	binutils-devel
 BuildRequires:	libnl-devel >= 3.2
 BuildRequires:	libpcap-devel
+BuildRequires:	libtool
 BuildRequires:	linux-libc-headers
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

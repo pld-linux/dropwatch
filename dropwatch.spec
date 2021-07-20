@@ -7,6 +7,7 @@ License:	GPL v2+
 Group:		Applications/System
 Source0:	https://github.com/nhorman/dropwatch/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	64527bb669393e45b9b21f0b91c574c0
+Patch0:		%{name}-no_werror.patch
 URL:		https://github.com/nhorman/dropwatch
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -29,6 +30,7 @@ odrzuconych pakietów sieciowych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}

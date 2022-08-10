@@ -2,7 +2,7 @@ Summary:	Kernel dropped packet monitor
 Summary(pl.UTF-8):	Monitor pakietów odrzuconych przez jądro
 Name:		dropwatch
 Version:	1.5.3
-Release:	5
+Release:	6
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://github.com/nhorman/dropwatch/archive/v%{version}/%{name}-%{version}.tar.gz
